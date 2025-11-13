@@ -1,71 +1,48 @@
-# Gnoke Station
+# 💻 Gnokestation - The WebDesktop
 
-**Ultra-Lightweight Industrial Interface Platform**
-Complete desktop environment in just **700KB** – designed for industrial HMIs, controllers, and embedded systems.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e8d4c7d0-c3d5-49e0-84a1-8d2629b3a985/deploy-status)](https://gnoke-web.netlify.app)
+[![Architecture-WebDesktop](https://img.shields.io/badge/Architecture-WebDesktop-3f6e9b?style=flat-square&logo=github)](https://gnoke-web.netlify.app)
+[![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-*A WebDesktop by edmundsparrow*
+**Live Demo:** [**gnoke-web.netlify.app**](https://gnoke-web.netlify.app)
 
----
-
-## 🚀 Key Features
-
-* **700KB Total Size**: Core system + 25+ apps, no external dependencies.
-* **Runs on 512MB RAM**: No custom drivers required.
-* **Cross-Platform**: Works anywhere a browser runs (ARM, x86, mobile, embedded).
-* **Focus on Frontend UI**: Browser handles **all** rendering, networking, and security.
-* **Decoupled Architecture**: Requires **only** a lightweight **HAL Proxy** to bridge the browser to device APIs (for non-local apps).
-* **Fast Development**: Build apps with standard web technologies (HTML, CSS, JS).
+Gnokestation is a fast, modular **WebDesktop** environment built entirely on vanilla JavaScript, HTML, and CSS. It focuses on providing a responsive, complete desktop shell experience, featuring a functional Window Manager and a clean application architecture.
 
 ---
 
-## 💡 Why Gnoke Station?
+## 🌟 Core Focus: Shell and Modularity
 
-Traditional embedded UI development is slow, costly, and hardware-specific. Gnoke Station eliminates complexity by leveraging the browser as the runtime.
+Gnokestation is designed as a **Single-Page Application (SPA)** that uses a strict, modular pattern to manage its core system services and third-party applications.
 
-| Metric | Traditional Embedded Development | **Gnoke Station Integration** |
+### Architectural Pillars
+
+| Component | Responsibility | Benefit |
 | :--- | :--- | :--- |
-| **Cost** | **$50K–$200K** | **$5K–$15K** (Frontend) |
-| **Timeline** | 6–18 months | **2–8 weeks** |
-| **Team** | Specialized embedded engineers | Existing web developers |
+| **Window Manager** | Handles window creation, movement, resizing, and layering. | Provides a fluid, traditional desktop feel. |
+| **SPA Core** | All essential system logic (like the Taskbar and App Registry) is bundled into a single `index.html` file. | Extremely fast initial load and performance. |
+| **Modularity (Plugins)** | Applications are external `.js` files loaded dynamically by `plugins.js`. | Allows for easy expansion, development, and separation of code. |
+| **IIFE Pattern** | Every app is wrapped in an `(function() { ... })()` pattern. | **Critical for stability:** Prevents global variable conflicts between applications. |
 
-**Key Insight:** Gnoke Station provides the complete, professional frontend UI, allowing your team to focus only on the essential **Hardware Abstraction Layer (HAL)** backend logic.
+## 📐 The Standard Application Template
 
----
+Every application in Gnokestation must adhere to the **IIFE + Global Export** template to ensure compatibility and system safety.
 
-## 🛠️ Applications Included
+```javascript
+// Example Application Structure
 
-* **Zero-Setup Apps (4)**: Calculator, Clock, Weather, News Feed (no backend needed).
-* **HAL-Required Controllers (3)**: WLED, GPIO, Samsung TV Remote (production-ready UI).
-* **Reference UIs (20+)**: Aquarium, Greenhouse, Smart Home Hub, Industrial Sensors (simulated for fast integration).
-* **System Utilities**: App Store, Settings, Terminal.
+(function() {
+  'use strict';
+  
+  // Private variables and functions remain scoped and protected here.
+  const PRIVATE_STATE = 0; 
 
----
-
-## 🎮 Try It Out
-
-* **[Manufacturer Pitch:](https://gnokepitch.netlify.app)**
-* **[Live Demo](https://cutt.ly/XrM3CxqA)**
-* **[Source Code](https://github.com/edmundsparrow/gnokestation)**
-
----
-
-## 📊 Performance
-
-* Boot Time: **< <5 second**
-* RAM Usage: **~30MB**
-* 100% Browser Compatible
-
----
-
-## 📖 License & Support
-
-Gnoke Station is **100% Free & Open Source** under the **GPL-3.0 License**.
-Commercial consulting & integration support are available for your HAL implementation.
-
----
-
-## 📬 Contact
-
-Ekong Ikpe (edmundsparrow) • Gnoke Station
-* 📧 Email: [ekongmikpe@gmail.com](mailto:ekongmikpe@gmail.com)
-* 💬 WhatsApp: [Message](https://wa.me/2349024054758)
+  window.MyAppName = {
+    // This is the only object exposed globally (Global Export).
+    open: function() {
+        // ... launch logic using WindowManager ...
+    }
+  };
+  
+  // Register the app with its metadata.
+  window.AppRegistry.registerApp({...});
+})(); 
