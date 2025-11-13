@@ -62,7 +62,7 @@ Gnokestation is engineered with the primary vision of becoming a **Unified Contr
 | :--- | :--- |
 | **Live Demo** | [**Launch Gnokestation**](https://gnoke-webos.netlify.app) |
 | **Pitch Deck** | [View Presentation](https://gnokepitch.netlify.app) |
-| **Source Code** | [edmundsparrow/gnokestation](https://github.com/edmundsparrow/gnokestation) |
+| **Source Code** | [edmundsparrow/gnokestation](https://github.com/edmundsparrow/webdesktop) |
 | **License** | GPL-3.0 |
 
 | Contact | |
