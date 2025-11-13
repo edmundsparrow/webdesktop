@@ -1,10 +1,5 @@
 # 💻 Gnokestation - The WebDesktop
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e8d4c7d0-c3d5-49e0-84a1-8d2629b3a985/deploy-status)](https://gnoke-web.netlify.app)
-[![Architecture-WebDesktop](https://img.shields.io/badge/Architecture-WebDesktop-3f6e9b?style=flat-square&logo=github)](https://gnoke-web.netlify.app)
-[![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
-**Live Demo:** [**gnoke-web.netlify.app**](https://gnoke-web.netlify.app)
+**Live Demo:** [**gnoke-webos.netlify.app**](https://gnoke-webos.netlify.app)
 
 Gnokestation is a fast, modular **WebDesktop** environment built entirely on vanilla JavaScript, HTML, and CSS. It focuses on providing a responsive, complete desktop shell experience, featuring a functional Window Manager and a clean application architecture.
 
