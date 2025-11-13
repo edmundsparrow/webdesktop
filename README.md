@@ -1,43 +1,74 @@
-# 💻 Gnokestation - The WebDesktop
-**Live Demo:** [**gnoke-webos.netlify.app**](https://gnoke-webos.netlify.app)
+# 💻 Gnokestation - The Modular WebDesktop
 
-Gnokestation is a fast, modular **WebDesktop** environment built entirely on vanilla JavaScript, HTML, and CSS. It focuses on providing a responsive, complete desktop shell experience, featuring a functional Window Manager and a clean application architecture.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e8d4c7d0-c3d5-49e0-84a1-8d2629b3a985/deploy-status)](https://gnoke-web.netlify.app)
+[![Architecture-SPA](https://img.shields.io/badge/Architecture-Single--Page%20App-2980b9?style=flat-square)](https://gnoke-web.netlify.app)
+[![Size-700KB](https://img.shields.io/badge/Footprint-~700KB-009688?style=flat-square)]()
+[![License-GPL3](https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0)
+
+**A complete, ultra-lightweight desktop environment that runs entirely in the browser.**
+
+Gnokestation is built on a strict, high-performance architecture, proving that a full desktop experience—including a powerful Window Manager and an App Ecosystem—can be achieved with minimal resources. It is a true WebDesktop, designed for speed and modularity.
 
 ---
 
-## 🌟 Core Focus: Shell and Modularity
+## 🌟 Architectural Maturity (The WebDesktop Core)
 
-Gnokestation is designed as a **Single-Page Application (SPA)** that uses a strict, modular pattern to manage its core system services and third-party applications.
+Gnokestation is more than a UI theme; it is built as a **Single-Page Application (SPA)** kernel that loads applications as encapsulated, safe modules.
 
-### Architectural Pillars
+### 1. The Core Infrastructure
 
-| Component | Responsibility | Benefit |
-| :--- | :--- | :--- |
-| **Window Manager** | Handles window creation, movement, resizing, and layering. | Provides a fluid, traditional desktop feel. |
-| **SPA Core** | All essential system logic (like the Taskbar and App Registry) is bundled into a single `index.html` file. | Extremely fast initial load and performance. |
-| **Modularity (Plugins)** | Applications are external `.js` files loaded dynamically by `plugins.js`. | Allows for easy expansion, development, and separation of code. |
-| **IIFE Pattern** | Every app is wrapped in an `(function() { ... })()` pattern. | **Critical for stability:** Prevents global variable conflicts between applications. |
+The entire system shell is contained within a single `index.html` file, bundling essential global services:
 
-## 📐 The Standard Application Template
+* **Window Manager (`window.WindowManager`):** Controls window state, resizing, z-indexing, and desktop layout.
+* **Application Registry (`window.AppRegistry`):** The central metadata list for all installed apps.
+* **Event Bus (`window.EventBus`):** Allows applications to communicate safely without direct dependency.
 
-Every application in Gnokestation must adhere to the **IIFE + Global Export** template to ensure compatibility and system safety.
+### 2. Strict Modularity (The Application Standard)
 
-```javascript
-// Example Application Structure
+All applications are treated as external plugins, loaded dynamically by `plugins.js`. This guarantees system stability using the following pattern:
 
-(function() {
-  'use strict';
-  
-  // Private variables and functions remain scoped and protected here.
-  const PRIVATE_STATE = 0; 
+| Pattern | Benefit |
+| :--- | :--- |
+| **IIFE Wrapper** | Every app is wrapped in an `(function() { ... })()` to protect all internal variables from the global scope, eliminating conflicts. |
+| **Single Global Export** | Only one object (e.g., `window.CalculatorApp`) is ever exposed by the plugin, giving the `AppRegistry` a clean, reliable entry point. |
 
-  window.MyAppName = {
-    // This is the only object exposed globally (Global Export).
-    open: function() {
-        // ... launch logic using WindowManager ...
-    }
-  };
-  
-  // Register the app with its metadata.
-  window.AppRegistry.registerApp({...});
-})(); 
+### 3. Key Performance Metrics
+
+| Metric | Specification |
+| :--- | :--- |
+| **Total Size** | ~700KB |
+| **Minimum RAM** | Runs smoothly on devices with 512MB RAM |
+| **Compatibility** | Works on any device with a standard web browser |
+| **Development** | Build apps using only HTML, CSS, and JS |
+
+---
+
+## ⚙️ Vision: Beyond the Desktop
+
+While fully functional as a standalone WebDesktop, Gnokestation is engineered with the *potential* to act as a **Hardware Abstraction Layer (HAL) client** through a simple backend proxy.
+
+This architecture enables advanced use cases where the desktop interface becomes a command center:
+
+* **Industrial:** Factory dashboards and industrial sensor monitoring.
+* **Smart Devices:** Control panels for smart homes or greenhouse systems.
+* **Prototyping:** A unified interface for managing Arduino or Raspberry Pi hardware.
+
+| Application Examples (No Backend Needed) |
+| :--- |
+| Calculator, Clock, Weather, News |
+
+---
+
+## 🔗 Links & Contact
+
+| Resource | Link |
+| :--- | :--- |
+| **Live Demo** | [Launch Gnokestation](https://cutt.ly/XrM3CxqA) |
+| **Pitch Deck** | [View Presentation](https://gnokepitch.netlify.app) |
+| **Source Code** | [edmundsparrow/gnokestation](https://github.com/edmundsparrow/gnokestation) |
+| **License** | GPL-3.0 |
+
+| Contact | |
+| :--- | :--- |
+| **Email** | ekongmikpe@gmail.com |
+| **WhatsApp** | [Message Edmund Sparrow](https://wa.me/2349024054758) |
